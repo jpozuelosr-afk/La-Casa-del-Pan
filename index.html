@@ -1,145 +1,255 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>La Casa del Pan</title>
+
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
 
-    body {
-        background-color: #fdf6ec;
-        color: #333;
-    }
+body{
+    background-color:#fdf6ec;
+    color:#333;
+}
 
-    header {
-        background: #7394DB;
-        color: white;
-        text-align: center;
-        padding: 30px;
-    }
+header{
+    background:#7394DB;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
 
-    header h1 {
-        font-size: 3em;
-    }
+header h1{
+    font-size:3em;
+}
 
-    header p {
-        margin-top: 10px;
-        font-size: 1.2em;
-    }
+header p{
+    margin-top:10px;
+    font-size:1.2em;
+}
 
-    nav {
-        background: #80838A;
-        text-align: center;
-        padding: 15px;
-    }
+nav{
+    background:#80838A;
+    text-align:center;
+    padding:15px;
+}
 
-    nav a {
-        color: white;
-        text-decoration: none;
-        margin: 0 20px;
-        font-weight: bold;
-    }
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 20px;
+    font-weight:bold;
+}
 
-    nav a:hover {
-        text-decoration: underline;
-    }
+nav a:hover{
+    text-decoration:underline;
+}
 
-    .hero {
-        text-align: center;
-        padding: 50px 20px;
-        background: url('https://revistamorelia.com/wp-content/uploads/2025/03/Comer-Pan-Todos-los-Dias.webp') center/cover no-repeat;
-        color: white;
-    }
+.hero{
+    text-align:center;
+    padding:50px 20px;
+    background:url('https://revistamorelia.com/wp-content/uploads/2025/03/Comer-Pan-Todos-los-Dias.webp') center/cover no-repeat;
+    color:white;
+}
 
-    .hero h2 {
-        font-size: 2.5em;
-        background: rgba(0,0,0,0.5);
-        display: inline-block;
-        padding: 10px 20px;
-        border-radius: 10px;
-    }
+.hero h2{
+    font-size:2.5em;
+    background:rgba(0,0,0,0.5);
+    display:inline-block;
+    padding:10px 20px;
+    border-radius:10px;
+}
 
-    .menu {
-        padding: 50px 20px;
-        text-align: center;
-    }
+.menu{
+    padding:50px 20px;
+    text-align:center;
+}
 
-    .menu h2 {
-        margin-bottom: 30px;
-        color: #b22222;
-    }
+.menu h2{
+    margin-bottom:30px;
+    color:#b22222;
+}
 
-    .productos {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
+.productos{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
 
-    .card {
-        background: white;
-        width: 280px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        overflow: hidden;
-    }
+.card{
+    background:white;
+    width:280px;
+    border-radius:10px;
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+    overflow:hidden;
+}
 
-    .card img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-    }
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
 
-    .card h3 {
-        margin: 15px 0 10px;
-        color: #228b22;
-    }
+.card h3{
+    margin:15px 0 10px;
+    color:#228b22;
+}
 
-    .card p {
-        padding: 0 15px 15px;
-    }
+.card p{
+    padding:0 15px 15px;
+}
 
-    .precio {
-        font-size: 1.3em;
-        color: #b22222;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
+.precio{
+    font-size:1.3em;
+    color:#b22222;
+    font-weight:bold;
+    margin-bottom:15px;
+}
 
-    .card button {
-        background: #b22222;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+.card button{
+    background:#b22222;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    margin-bottom:20px;
+    border-radius:5px;
+    cursor:pointer;
+}
 
-    .card button:hover {
-        background: #8b1a1a;
-    }
+.card button:hover{
+    background:#8b1a1a;
+}
 
-    footer {
-        background: #80838A;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        margin-top: 30px;
-    }
+footer{
+    background:#80838A;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+
+/* CHATBOT */
+
+#chatbot{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:340px;
+    font-family:Arial,sans-serif;
+    z-index:9999;
+}
+
+#chat-header{
+    background:#b22222;
+    color:white;
+    padding:15px;
+    text-align:center;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:12px 12px 0 0;
+    box-shadow:0 4px 10px rgba(0,0,0,0.25);
+}
+
+#chat-body{
+    display:none;
+    flex-direction:column;
+    height:450px;
+    background:white;
+    border:2px solid #b22222;
+    border-top:none;
+    border-radius:0 0 12px 12px;
+    overflow:hidden;
+}
+
+#chat-messages{
+    flex:1;
+    padding:12px;
+    overflow-y:auto;
+    background:#fffaf5;
+}
+
+.bot-message,
+.user-message{
+    margin:8px 0;
+    padding:10px 12px;
+    border-radius:10px;
+    max-width:85%;
+    line-height:1.4;
+    word-wrap:break-word;
+}
+
+.bot-message{
+    background:#f1f1f1;
+    color:#333;
+}
+
+.user-message{
+    background:#228b22;
+    color:white;
+    margin-left:auto;
+    text-align:right;
+}
+
+#chat-input{
+    display:flex;
+    border-top:1px solid #ddd;
+}
+
+#chat-input input{
+    flex:1;
+    border:none;
+    padding:12px;
+    outline:none;
+    font-size:14px;
+}
+
+#chat-input button{
+    background:#b22222;
+    color:white;
+    border:none;
+    padding:0 18px;
+    cursor:pointer;
+}
+
+#chat-input button:hover{
+    background:#8b1a1a;
+}
+
+.chat-options{
+    margin-top:10px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.chat-options button{
+    background:#228b22;
+    color:white;
+    border:none;
+    padding:8px 10px;
+    border-radius:6px;
+    cursor:pointer;
+    text-align:left;
+}
+
+.chat-options button:hover{
+    background:#1b6f1b;
+}
 </style>
 </head>
+
 <body>
 
 <header>
     <h1>La Casa del Pan</h1>
-    <p>Auténtico sabor recuerdos mediante un pan</p>
+    <p>Auténtico sabor y recuerdos mediante un pan</p>
 </header>
 
 <nav>
@@ -153,6 +263,7 @@
 </section>
 
 <section class="menu" id="menu">
+
     <h2>Nuestros Productos</h2>
 
     <div class="productos">
@@ -222,7 +333,7 @@
         </div>
 
         <div class="card">
-            <img src="https://images.getrecipekit.com/20230327191313-Kettle_HotChoco.jpg?quality=90&">
+            <img src="https://images.getrecipekit.com/20230327191313-Kettle_HotChoco.jpg?quality=90&" alt="Chocolate caliente">
             <h3>Chocolate caliente</h3>
             <p>Bebida cremosa y reconfortante.</p>
             <p class="precio">Q15.00</p>
@@ -230,6 +341,7 @@
         </div>
 
     </div>
+
 </section>
 
 <footer id="contacto">
@@ -237,12 +349,16 @@
     <p>&copy; 2026 La Casa del Pan. Todos los derechos reservados.</p>
 </footer>
 
+<!-- CHATBOT -->
+
 <div id="chatbot">
+
     <div id="chat-header" onclick="toggleChat()">
         💬 Chat con nosotros
     </div>
 
     <div id="chat-body">
+
         <div id="chat-messages">
             <div class="bot-message">
                 ¡Hola! 👋 Bienvenido a La Casa del Pan.
@@ -254,159 +370,63 @@
                 type="text"
                 id="userInput"
                 placeholder="Escribe tu mensaje..."
-            />
+            >
             <button onclick="sendMessage()">Enviar</button>
         </div>
+
     </div>
+
 </div>
-
-<style>
-
-#chatbot {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 340px;
-    font-family: Arial, sans-serif;
-    z-index: 9999;
-}
-
-#chat-header {
-    background: #b22222;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 12px 12px 0 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-}
-
-#chat-body {
-    display: none;
-    flex-direction: column;
-    height: 450px;
-    background: white;
-    border: 2px solid #b22222;
-    border-top: none;
-    border-radius: 0 0 12px 12px;
-    overflow: hidden;
-}
-
-#chat-messages {
-    flex: 1;
-    padding: 12px;
-    overflow-y: auto;
-    background: #fffaf5;
-}
-
-.bot-message,
-.user-message {
-    margin: 8px 0;
-    padding: 10px 12px;
-    border-radius: 10px;
-    max-width: 85%;
-    line-height: 1.4;
-    word-wrap: break-word;
-}
-
-.bot-message {
-    background: #f1f1f1;
-    color: #333;
-}
-
-.user-message {
-    background: #228b22;
-    color: white;
-    margin-left: auto;
-    text-align: right;
-}
-
-#chat-input {
-    display: flex;
-    border-top: 1px solid #ddd;
-}
-
-#chat-input input {
-    flex: 1;
-    border: none;
-    padding: 12px;
-    outline: none;
-    font-size: 14px;
-}
-
-#chat-input button {
-    background: #b22222;
-    color: white;
-    border: none;
-    padding: 0 18px;
-    cursor: pointer;
-}
-
-#chat-input button:hover {
-    background: #8b1a1a;
-}
-
-/* ===== OPCIONES ===== */
-.chat-options {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.chat-options button {
-    background: #228b22;
-    color: white;
-    border: none;
-    padding: 8px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: left;
-}
-
-.chat-options button:hover {
-    background: #1b6f1b;
-}
-</style>
 
 <script>
 let modoAsesor = false;
 let opcionesMostradas = false;
 let confirmarSalida = false;
+let esperandoNombre = false;
+let nombreUsuario = "Cliente";
 
-// Abrir / cerrar chat
+// Abrir y cerrar chat
 function toggleChat() {
-    const body = document.getElementById('chat-body');
 
-    if (body.style.display === 'flex') {
-        body.style.display = 'none';
+    const body = document.getElementById("chat-body");
+
+    if(body.style.display === "flex"){
+        body.style.display = "none";
     } else {
-        body.style.display = 'flex';
 
-        if (!opcionesMostradas) {
+        body.style.display = "flex";
+
+        if(!opcionesMostradas){
             opcionesMostradas = true;
-            setTimeout(mostrarOpciones, 500);
+
+            setTimeout(() => {
+                mostrarOpciones();
+            }, 500);
         }
     }
 }
 
-// Agregar mensajes al chat
-function addMessage(text, className) {
-    const messages = document.getElementById('chat-messages');
-    const msg = document.createElement('div');
+// Agregar mensajes
+function addMessage(text, className){
+
+    const messages = document.getElementById("chat-messages");
+
+    const msg = document.createElement("div");
 
     msg.className = className;
     msg.innerHTML = text;
 
     messages.appendChild(msg);
+
     messages.scrollTop = messages.scrollHeight;
 }
 
-// Mostrar botones de opciones
-function mostrarOpciones() {
+// Mostrar opciones
+function mostrarOpciones(){
+
     addMessage(`
         Selecciona una opción:
+
         <div class="chat-options">
             <button onclick="selectOption('Ver menú')">🍞 Ver menú</button>
             <button onclick="selectOption('Precios')">💰 Precios</button>
@@ -415,18 +435,21 @@ function mostrarOpciones() {
             <button onclick="selectOption('Asesor')">👨‍💼 Contactar a un asesor</button>
             <button onclick="selectOption('Salir')">❌ Finalizar chat</button>
         </div>
-    `, 'bot-message');
+    `, "bot-message");
 }
 
-// Procesar opción seleccionada
-function selectOption(option) {
-    addMessage(option, 'user-message');
+// Seleccionar opción
+function selectOption(option){
 
-    let response = '';
+    addMessage(option, "user-message");
 
-    if (option === 'Ver menú') {
+    let response = "";
+
+    if(option === "Ver menú"){
+
         response = `
             🍞 <strong>Menú de La Casa del Pan:</strong><br><br>
+
             • Pan francés<br>
             • Pan dulce<br>
             • Croissant<br>
@@ -438,9 +461,12 @@ function selectOption(option) {
             • Chocolate caliente
         `;
     }
-    else if (option === 'Precios') {
+
+    else if(option === "Precios"){
+
         response = `
             💰 <strong>Lista de precios:</strong><br><br>
+
             • Pan francés — Q1.00 c/u<br>
             • Pan dulce — Q3.00 c/u<br>
             • Croissant — Q8.00<br>
@@ -452,302 +478,279 @@ function selectOption(option) {
             • Chocolate caliente — Q15.00
         `;
     }
-    else if (option === 'Horario') {
-        response = '🕒 Atendemos todos los días de 6:30 AM a 8:00 PM.';
+
+    else if(option === "Horario"){
+        response = "🕒 Atendemos todos los días de 6:30 AM a 8:00 PM.";
     }
-    else if (option === 'Contacto') {
-        response = '📞 Llámanos al +502 1234-5678.';
+
+    else if(option === "Contacto"){
+        response = "📞 Llámanos al +502 1234-5678.";
     }
-    else if (option === 'Asesor') {
+
+    else if(option === "Asesor"){
+
+        esperandoNombre = true;
         modoAsesor = true;
-        response = `
-            👨‍💼 Te hemos conectado con un asesor.<br>
-            Escribe tu mensaje y uno de nuestros asesores te responderá en este chat.
-        `;
-    }
-else if (option === 'Salir') {
-    finalizarChat();
-    return;
-}
 
-    setTimeout(function () {
-        addMessage(response, 'bot-message');
+        addMessage(`
+            👨‍💼 Para conectarte con un asesor, por favor escribe tu nombre:
+        `, "bot-message");
 
-        if (!modoAsesor) {
-            setTimeout(mostrarOpciones, 600);
-        }
-    }, 500);
-}
-
-// Enviar mensaje escrito
-async function sendMessage() {
-    const input = document.getElementById('userInput');
-    const text = input.value.trim();
-
-    if (text === '') return;
-
-    addMessage(text, 'user-message');
-    input.value = '';
-
-const idMensaje = await guardarMensaje("Cliente", text);
-escucharRespuesta(idMensaje);
-
-    // Si está en modo asesor, no responder automáticamente
-    if (modoAsesor) {
         return;
     }
 
-  const lower = text.toLowerCase();
-let response = 'Gracias por tu mensaje 😊';
+    else if(option === "Salir"){
 
-if (confirmarSalida) {
-
-    if (lower === "si" || lower === "sí") {
-
-        addMessage(`
-            👋 Chat cerrado correctamente.<br>
-            ¡Gracias por visitarnos!
-        `, 'bot-message');
-
-        modoAsesor = false;
-        confirmarSalida = false;
-
-        setTimeout(() => {
-            document.getElementById('chat-body').style.display = 'none';
-        }, 1500);
-
-    } else {
-
-        addMessage(`
-            😊 Perfecto, seguimos en el chat.
-        `, 'bot-message');
-
-        confirmarSalida = false;
+        finalizarChat();
+        return;
     }
 
-    return;
+    setTimeout(() => {
+
+        addMessage(response, "bot-message");
+
+        if(!modoAsesor){
+
+            setTimeout(() => {
+                mostrarOpciones();
+            }, 600);
+        }
+
+    }, 500);
 }
 
-// Activar confirmación al escribir "salir"
-if (lower === "salir") {
+// Enviar mensaje
+async function sendMessage(){
 
-    confirmarSalida = true;
+    const input = document.getElementById("userInput");
+    const text = input.value.trim();
 
-    addMessage(`
-        ⚠️ ¿Seguro que deseas salir?
-        <div class="chat-options">
-            <button onclick="sendMessageSim('si')">✅ Sí</button>
-            <button onclick="sendMessageSim('no')">❌ No</button>
-        </div>
-    `, 'bot-message');
+    if(text === "") return;
 
-    return;
-}
+    // Si espera nombre
+    if(esperandoNombre){
 
-if (lower.includes("asesor")) {
+        nombreUsuario = text;
+        esperandoNombre = false;
 
+        addMessage(text, "user-message");
+
+        addMessage(`
+            👤 Gracias <strong>${nombreUsuario}</strong><br>
+            Ahora puedes escribir tu mensaje al asesor.
+        `, "bot-message");
+
+        input.value = "";
+
+        // Guardar mensaje
+        const idMensaje = await guardarMensaje(nombreUsuario, text);
+
+        // Escuchar respuesta
+        escucharRespuesta(idMensaje);
+
+        return;
+    }
+
+    addMessage(text, "user-message");
+
+    input.value = "";
+
+    // Si está en modo asesor
+    if(modoAsesor){
+
+        const idMensaje = await guardarMensaje(nombreUsuario, text);
+
+        escucharRespuesta(idMensaje);
+
+        return;
+    }
+
+    const lower = text.toLowerCase();
+
+    let response = "Gracias por tu mensaje 😊";
+
+    // Confirmar salida
+    if(confirmarSalida){
+
+        if(lower === "si" || lower === "sí"){
+
+            addMessage(`
+                👋 Chat cerrado correctamente.<br>
+                ¡Gracias por visitarnos!
+            `, "bot-message");
+
+            modoAsesor = false;
+            confirmarSalida = false;
+
+            setTimeout(() => {
+                document.getElementById("chat-body").style.display = "none";
+            }, 1500);
+
+        } else {
+
+            addMessage(`
+                😊 Perfecto, seguimos en el chat.
+            `, "bot-message");
+
+            confirmarSalida = false;
+        }
+
+        return;
+    }
+
+    // Salir
+    if(lower === "salir"){
+
+        confirmarSalida = true;
+
+        addMessage(`
+            ⚠️ ¿Seguro que deseas salir?
+
+            <div class="chat-options">
+                <button onclick="sendMessageSim('si')">✅ Sí</button>
+                <button onclick="sendMessageSim('no')">❌ No</button>
+            </div>
+        `, "bot-message");
+
+        return;
+    }
+
+    // Asesor
+    if (lower.includes("asesor")) {
+
+    esperandoNombre = true;
     modoAsesor = true;
 
     addMessage(`
-        👨‍💼 Te hemos conectado con un asesor.<br>
-        Escribe tu mensaje y uno de nuestros asesores te responderá en este chat.
+        👨‍💼 Para conectarte con un asesor, por favor escribe tu nombre.
     `, 'bot-message');
 
     return;
 }
 
-if (
-    lower.includes("qué venden") ||
-    lower.includes("que venden") ||
-    lower.includes("menu") ||
-    lower.includes("menú") ||
-    lower.includes("productos")
-) {
-    response = "🥖 Ofrecemos pan francés, pan dulce, pasteles, desayunos, café y bebidas.";
-}
-else if (
-    lower.includes("ingredientes") ||
-    lower.includes("qué lleva") ||
-    lower.includes("que lleva")
-) {
-    response = "🧈 Utilizamos ingredientes frescos y de alta calidad en todos nuestros productos.";
-}
-else if (
-    lower.includes("pastel personalizado") ||
-    lower.includes("pastel temático") ||
-    lower.includes("pastel tematico")
-) {
-    response = "🎂 Elaboramos pasteles personalizados con el diseño y sabor que prefieras.";
-}
-else if (
-    lower.includes("pedido grande") ||
-    lower.includes("mayoreo") ||
-    lower.includes("cantidad grande")
-) {
-    response = "📦 Sí, atendemos pedidos grandes para empresas, reuniones y eventos.";
-}
-else if (
-    lower.includes("sin azúcar") ||
-    lower.includes("sin azucar") ||
-    lower.includes("dietético") ||
-    lower.includes("dietetico")
-) {
-    response = "🍰 Consulta con nuestro asesor por opciones especiales según disponibilidad.";
-}
-else if (
-    lower.includes("pan integral") ||
-    lower.includes("integral")
-) {
-    response = "🌾 También ofrecemos opciones de pan integral y productos seleccionados.";
-}
-else if (
-    lower.includes("recién horneado") ||
-    lower.includes("recien horneado")
-) {
-    response = "🔥 Nuestro pan se hornea diariamente para garantizar frescura.";
-}
-else if (
-    lower.includes("combo") ||
-    lower.includes("combos")
-) {
-    response = "🥪 Tenemos combos de desayuno con pan, café y acompañamientos.";
-}
-else if (
-    lower.includes("bebidas") ||
-    lower.includes("jugos")
-) {
-    response = "🥤 Ofrecemos café, chocolate caliente, jugos y otras bebidas.";
-}
-else if (
-    lower.includes("cumpleaños") ||
-    lower.includes("aniversario")
-) {
-    response = "🎉 Preparamos pasteles y pedidos especiales para celebraciones.";
-}
-else if (
-    lower.includes("pedido anticipado") ||
-    lower.includes("con cuánto tiempo") ||
-    lower.includes("con cuanto tiempo")
-) {
-    response = "📅 Recomendamos realizar pedidos especiales con al menos 24 horas de anticipación.";
-}
-else if (
-    lower.includes("ofertas") ||
-    lower.includes("descuentos")
-) {
-    response = "🏷️ Consulta nuestras promociones y descuentos disponibles.";
-}
-else if (
-    lower.includes("empresas") ||
-    lower.includes("oficinas")
-) {
-    response = "🏢 Atendemos pedidos corporativos para oficinas y reuniones.";
-}
-else if (
-    lower.includes("sabor") ||
-    lower.includes("sabores")
-) {
-    response = "🍓 Nuestros pasteles están disponibles en varios sabores según disponibilidad.";
-}
-else if (
-    lower.includes("pedido especial")
-) {
-    response = "✨ Podemos preparar pedidos especiales según tus necesidades.";
-}
-
-
-    if (lower.includes('pizza')) {
-        response = '🍕 Nuestra Pizza Margarita cuesta $12.99.';
-    }
-    else if (lower.includes('pasta')) {
-        response = '🍝 La Pasta Alfredo cuesta $10.99.';
-    }
-    else if (lower.includes('lasa')) {
-        response = '🧀 La Lasaña Casera cuesta $11.99.';
-    }
-    else if (lower.includes('horario')) {
-        response = '🕒 Atendemos todos los días de 11:00 AM a 10:00 PM.';
-    }
-    else if (lower.includes('hola')) {
-        response = '¡Hola! ¿En qué puedo ayudarte?';
+    // RESPUESTAS
+    if(
+        lower.includes("qué venden") ||
+        lower.includes("que venden") ||
+        lower.includes("menu") ||
+        lower.includes("menú") ||
+        lower.includes("productos")
+    ){
+        response = "🥖 Ofrecemos pan francés, pan dulce, pasteles, desayunos, café y bebidas.";
     }
 
-   setTimeout(function () {
+    else if(
+        lower.includes("ingredientes") ||
+        lower.includes("qué lleva") ||
+        lower.includes("que lleva")
+    ){
+        response = "🧈 Utilizamos ingredientes frescos y de alta calidad.";
+    }
 
-    addMessage(response, 'bot-message');
+    else if(lower.includes("horario")){
+        response = "🕒 Atendemos todos los días de 6:30 AM a 8:00 PM.";
+    }
 
-    // Preguntar si desea ver opciones
+    else if(lower.includes("hola")){
+        response = "¡Hola! ¿En qué puedo ayudarte?";
+    }
+
     setTimeout(() => {
 
-        addMessage(`
-            📋 ¿Deseas ver el menú de opciones?
+        addMessage(response, "bot-message");
 
-            <div class="chat-options">
-                <button onclick="mostrarMenuOpciones()">✅ Sí</button>
-                <button onclick="ocultarOpciones()">❌ No</button>
-            </div>
-        `, 'bot-message');
+        setTimeout(() => {
 
-    }, 600);
+            addMessage(`
+                📋 ¿Deseas ver el menú de opciones?
 
-}, 500);
+                <div class="chat-options">
+                    <button onclick="mostrarMenuOpciones()">✅ Sí</button>
+                    <button onclick="ocultarOpciones()">❌ No</button>
+                </div>
+            `, "bot-message");
+
+        }, 600);
+
+    }, 500);
 }
 
-// Enviar con Enter
-window.addEventListener('DOMContentLoaded', function () {
-    document
-        .getElementById('userInput')
-        .addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
+// Enter para enviar
+window.addEventListener("DOMContentLoaded", () => {
+
+    document.getElementById("userInput")
+    .addEventListener("keypress", (e) => {
+
+        if(e.key === "Enter"){
+            sendMessage();
+        }
+
+    });
+
 });
 
-// Responder manualmente como asesor
-function responderComoAsesor(texto) {
-    addMessage('👨‍💼 ' + texto, 'bot-message');
+// Respuesta asesor
+function responderComoAsesor(texto){
+    addMessage("👨‍💼 " + texto, "bot-message");
 }
 
-// Finalizar atención del asesor
-function finalizarAsesor() {
+// Finalizar asesor
+function finalizarAsesor(){
+
     modoAsesor = false;
-    addMessage('✅ El asesor ha finalizado la conversación.', 'bot-message');
-    setTimeout(mostrarOpciones, 600);
+
+    addMessage(`
+        ✅ El asesor ha finalizado la conversación.
+    `, "bot-message");
+
+    setTimeout(() => {
+        mostrarOpciones();
+    }, 600);
 }
-// Finalizar conversación completa
-function finalizarChat() {
+
+// Finalizar chat
+function finalizarChat(){
 
     addMessage(`
         👋 Gracias por visitar <strong>La Casa del Pan</strong>.<br>
         ¡Esperamos atenderte pronto! 🥖☕
-    `, 'bot-message');
+    `, "bot-message");
 
     modoAsesor = false;
 
     setTimeout(() => {
-        document.getElementById('chat-body').style.display = 'none';
+        document.getElementById("chat-body").style.display = "none";
     }, 3000);
 }
-function sendMessageSim(texto) {
-    document.getElementById('userInput').value = texto;
+
+// Simular mensaje
+function sendMessageSim(texto){
+
+    document.getElementById("userInput").value = texto;
+
     sendMessage();
 }
-function mostrarMenuOpciones() {
+
+// Mostrar menú
+function mostrarMenuOpciones(){
     mostrarOpciones();
 }
 
-// No mostrar opciones
-function ocultarOpciones() {
+// Ocultar opciones
+function ocultarOpciones(){
 
     addMessage(`
         😊 Perfecto, seguiré respondiendo tus preguntas.
-    `, 'bot-message');
+    `, "bot-message");
 }
-
 </script>
+
+<!-- FIREBASE -->
+
 <script type="module">
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
 import {
     getFirestore,
     collection,
@@ -757,8 +760,9 @@ import {
     onSnapshot
 } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
-// Configuración de Firebase
+// Configuración Firebase
 const firebaseConfig = {
+
     apiKey: "AIzaSyDZxs4-PNni2BsPJVvS6GHQeAL9oLEypqY",
     authDomain: "chatbot-b40bc.firebaseapp.com",
     projectId: "chatbot-b40bc",
@@ -768,43 +772,57 @@ const firebaseConfig = {
     measurementId: "G-B57C607L6K"
 };
 
-// Inicializar Firebase
+// Inicializar
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
 
-// Función global para guardar mensajes
-window.guardarMensaje = async function(nombre, mensaje) {
-    try {
+// Guardar mensaje
+window.guardarMensaje = async function(nombreCliente, mensaje){
+
+    try{
+
         const ref = await addDoc(collection(db, "mensajes"), {
-            nombre: nombre,
+
+            nombre: nombreCliente,
             mensaje: mensaje,
             fecha: serverTimestamp(),
             respondido: false,
             respuesta: ""
         });
 
-        console.log("Mensaje guardado correctamente");
         return ref.id;
-    } catch (error) {
-        console.error("Error al guardar mensaje:", error);
+
+    } catch(error){
+
+        console.error(error);
     }
 };
-window.escucharRespuesta = function(idDocumento) {
+
+// Escuchar respuesta
+window.escucharRespuesta = function(idDocumento){
+
     const referencia = doc(db, "mensajes", idDocumento);
 
     let respuestaMostrada = false;
 
     onSnapshot(referencia, (snap) => {
-        if (!snap.exists()) return;
+
+        if(!snap.exists()) return;
 
         const data = snap.data();
 
-        if (data.respuesta && !respuestaMostrada) {
+        if(data.respuesta && !respuestaMostrada){
+
             respuestaMostrada = true;
+
             addMessage("👨‍💼 " + data.respuesta, "bot-message");
         }
+
     });
 };
+
 </script>
+
 </body>
 </html>
