@@ -429,6 +429,8 @@ function sendMessage() {
     addMessage(text, 'user-message');
     input.value = '';
 
+guardarMensaje("Cliente", text);
+
     // Si está en modo asesor, no responder automáticamente
     if (modoAsesor) {
         return;
