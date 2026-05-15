@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de Asesor</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #b22222;
+}
+
+.mensaje {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+textarea {
+    width: 100%;
+    min-height: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    margin-top: 10px;
+    background: #228b22;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1b6f1b;
+}
+</style>
+</head>
+<body>
+
+<h1>👨‍💼 Panel de Asesor</h1>
+
+<div id="mensajes">Cargando mensajes...</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  doc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDZxs4-PNni2BsPJVvS6GHQeAL9oLEypqY",
+  authDomain: "chatbot-b40bc.firebaseapp.com",
+  projectId: "chatbot-b40bc",
+  storageBucket: "chatbot-b40bc.firebasestorage.app",
+  messagingSenderId: "1092750503887",
+  appId: "1:1092750503887:web:5b8d31e3ecf809511e2cba",
+  measurementId: "G-B57C607L6K"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const contenedor = document.getElementById('mensajes');
+
+const q = query(collection(db, 'mensajes'), orderBy('fecha', 'desc'));
+
+onSnapshot(q, (snapshot) => {
+  contenedor.innerHTML = '';
+
+  if (snapshot.empty) {
+    contenedor.innerHTML = '<p>No hay mensajes.</p>';
+    return;
+  }
+
+  snapshot.forEach((item) => {
+    const data = item.data();
+    const respuesta = data.respuesta || '';
+
+    const div = document.createElement('div');
+    div.className = 'mensaje';
+
+    div.innerHTML = `
+      <strong>Cliente:</strong> ${data.nombre || 'Cliente'}<br>
+      <strong>Mensaje:</strong> ${data.mensaje || ''}<br><br>
+
+      <strong>Respuesta actual:</strong><br>
+      ${respuesta || '<em>Sin respuesta</em>'}
+
+      <textarea id="resp-${item.id}" placeholder="Escribe tu respuesta..."></textarea>
+      <button onclick="responder('${item.id}')">Enviar respuesta</button>
+    `;
+
+    contenedor.appendChild(div);
+  });
+});
+
+window.responder = async function(id) {
+  const textarea = document.getElementById(`resp-${id}`);
+  const texto = textarea.value.trim();
+
+  if (!texto) {
+    alert('Escribe una respuesta.');
+    return;
+  }
+
+  try {
+    await updateDoc(doc(db, 'mensajes', id), {
+      respuesta: texto,
+      respondido: true
+    });
+
+    alert('Respuesta enviada.');
+    textarea.value = '';
+  } catch (error) {
+    console.error('Error al responder:', error);
+    alert('Ocurrió un error al guardar la respuesta.');
+  }
+};
+</script>
+
+</body>
+</html>

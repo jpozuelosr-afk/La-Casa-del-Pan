@@ -420,7 +420,7 @@ function selectOption(option) {
 }
 
 // Enviar mensaje escrito
-function sendMessage() {
+async function sendMessage() {
     const input = document.getElementById('userInput');
     const text = input.value.trim();
 
@@ -429,7 +429,8 @@ function sendMessage() {
     addMessage(text, 'user-message');
     input.value = '';
 
-guardarMensaje("Cliente", text);
+const idMensaje = await guardarMensaje("Cliente", text);
+escucharRespuesta(idMensaje);
 
     // Si está en modo asesor, no responder automáticamente
     if (modoAsesor) {
@@ -490,7 +491,9 @@ import {
     getFirestore,
     collection,
     addDoc,
-    serverTimestamp
+    serverTimestamp,
+    doc,
+    onSnapshot
 } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
 // Configuración de Firebase
@@ -511,17 +514,35 @@ const db = getFirestore(app);
 // Función global para guardar mensajes
 window.guardarMensaje = async function(nombre, mensaje) {
     try {
-        await addDoc(collection(db, "mensajes"), {
+        const ref = await addDoc(collection(db, "mensajes"), {
             nombre: nombre,
             mensaje: mensaje,
             fecha: serverTimestamp(),
-            respondido: false
+            respondido: false,
+            respuesta: ""
         });
 
         console.log("Mensaje guardado correctamente");
+        return ref.id;
     } catch (error) {
         console.error("Error al guardar mensaje:", error);
     }
+};
+window.escucharRespuesta = function(idDocumento) {
+    const referencia = doc(db, "mensajes", idDocumento);
+
+    let respuestaMostrada = false;
+
+    onSnapshot(referencia, (snap) => {
+        if (!snap.exists()) return;
+
+        const data = snap.data();
+
+        if (data.respuesta && !respuestaMostrada) {
+            respuestaMostrada = true;
+            addMessage("👨‍💼 " + data.respuesta, "bot-message");
+        }
+    });
 };
 </script>
 </body>
