@@ -18,21 +18,14 @@ body{
     color:#333;
 }
 
-header{
-    background:#7394DB;
-    color:white;
-    text-align:center;
-    padding:30px;
+
+.fondo-img {
+    height: 210px;  
+    width: auto;
+margin: 0 auto;
+    display: block;
 }
 
-header h1{
-    font-size:3em;
-}
-
-header p{
-    margin-top:10px;
-    font-size:1.2em;
-}
 
 nav{
     background:#80838A;
@@ -248,8 +241,8 @@ footer{
 <body>
 
 <header>
-    <h1>La Casa del Pan</h1>
-    <p>Auténtico sabor y recuerdos mediante un pan</p>
+<img src="fondo2.png" alt="La Casa del Pan" class="fondo-img">
+
 </header>
 
 <nav>
@@ -259,7 +252,7 @@ footer{
 </nav>
 
 <section class="hero" id="inicio">
-    <h2>Sabores tradicionales de Italia</h2>
+    <h2>Sabores tradicionales de Guatemala</h2>
 </section>
 
 <section class="menu" id="menu">
@@ -384,6 +377,72 @@ let opcionesMostradas = false;
 let confirmarSalida = false;
 let esperandoNombre = false;
 let nombreUsuario = "Cliente";
+
+function limpiarTexto(texto){
+
+    return texto
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[¿?¡!.,]/g, "")
+        .trim();
+}
+
+function parecido(texto, palabraClave){
+
+    const palabrasTexto = texto.split(" ");
+    const palabrasClave = palabraClave.split(" ");
+
+    function distancia(a, b){
+
+        const matriz = [];
+
+        for(let i = 0; i <= b.length; i++){
+            matriz[i] = [i];
+        }
+
+        for(let j = 0; j <= a.length; j++){
+            matriz[0][j] = j;
+        }
+
+        for(let i = 1; i <= b.length; i++){
+
+            for(let j = 1; j <= a.length; j++){
+
+                if(b.charAt(i - 1) === a.charAt(j - 1)){
+
+                    matriz[i][j] = matriz[i - 1][j - 1];
+
+                } else {
+
+                    matriz[i][j] = Math.min(
+                        matriz[i - 1][j - 1] + 1,
+                        matriz[i][j - 1] + 1,
+                        matriz[i - 1][j] + 1
+                    );
+                }
+            }
+        }
+
+        return matriz[b.length][a.length];
+    }
+
+    let coincidencias = 0;
+
+    for(let palabraClaveItem of palabrasClave){
+
+        for(let palabraTexto of palabrasTexto){
+
+            if(distancia(palabraTexto, palabraClaveItem) <= 1){
+
+                coincidencias++;
+                break;
+            }
+        }
+    }
+
+    return coincidencias === palabrasClave.length;
+}
 
 // Abrir y cerrar chat
 function toggleChat() {
@@ -530,26 +589,20 @@ async function sendMessage(){
     // Si espera nombre
     if(esperandoNombre){
 
-        nombreUsuario = text;
-        esperandoNombre = false;
+    nombreUsuario = text;
+    esperandoNombre = false;
 
-        addMessage(text, "user-message");
+    addMessage(text, "user-message");
 
-        addMessage(`
-            👤 Gracias <strong>${nombreUsuario}</strong><br>
-            Ahora puedes escribir tu mensaje al asesor.
-        `, "bot-message");
+    addMessage(`
+        👤 Gracias <strong>${nombreUsuario}</strong><br>
+        Ahora puedes escribir tu mensaje al asesor.
+    `, "bot-message");
 
-        input.value = "";
+    input.value = "";
 
-        // Guardar mensaje
-        const idMensaje = await guardarMensaje(nombreUsuario, text);
-
-        // Escuchar respuesta
-        escucharRespuesta(idMensaje);
-
-        return;
-    }
+    return;
+}
 
     addMessage(text, "user-message");
 
@@ -565,9 +618,108 @@ async function sendMessage(){
         return;
     }
 
-    const lower = text.toLowerCase();
+    const lower = limpiarTexto(text);
 
     let response = "Gracias por tu mensaje 😊";
+
+const respuestas = [
+
+{
+    claves: ["hola", "buenas", "buenos dias", "buenas tardes", "buenas noches"],
+    respuesta: "👋 ¡Hola! Bienvenido a La Casa del Pan. ¿En qué podemos ayudarte?"
+},
+
+{
+    claves: ["adios", "hasta luego", "nos vemos", "bye"],
+    respuesta: "cerrar_chat"
+},
+
+{
+    claves: ["gracias", "muchas gracias"],
+    respuesta: "😊 ¡Con gusto! Estamos para servirte."
+},
+
+{
+    claves: ["como estas", "como esta", "que tal"],
+    respuesta: "😄 ¡Muy bien! Gracias por preguntar."
+},
+
+{
+    claves: ["que venden", "que ofrecen", "menu", "menus"],
+    respuesta: "🥖 Ofrecemos pan francés, pan dulce, pasteles, desayunos, café y bebidas."
+},
+
+{
+    claves: ["ingredientes", "que utilizan", "que lleva"],
+    respuesta: "🧈 Utilizamos ingredientes frescos y de alta calidad en todos nuestros productos."
+},
+
+{
+    claves: ["pasteles personalizados", "personalizados"],
+    respuesta: "🎂 Sí, elaboramos pasteles personalizados con el diseño y sabor que prefieras."
+},
+
+{
+    claves: ["pedidos grandes", "pedido grande", "eventos"],
+    respuesta: "📦 Sí, atendemos pedidos grandes para empresas, reuniones y eventos."
+},
+
+{
+    claves: ["sin azucar", "productos sin azucar"],
+    respuesta: "🍰 Consulta con nuestro asesor por opciones especiales según disponibilidad."
+},
+
+{
+    claves: ["pan integral", "integral"],
+    respuesta: "🌾 También ofrecemos opciones de pan integral y productos seleccionados."
+},
+
+{
+    claves: ["recien horneado", "fresco", "hornean diario"],
+    respuesta: "🔥 Nuestro pan se hornea diariamente para garantizar frescura."
+},
+
+{
+    claves: ["combos", "combo", "desayuno"],
+    respuesta: "🥪 Tenemos combos de desayuno con pan, café y acompañamientos."
+},
+
+{
+    claves: ["bebidas", "cafe", "jugos", "chocolate"],
+    respuesta: "🥤 Ofrecemos café, chocolate caliente, jugos y otras bebidas."
+},
+
+{
+    claves: ["cumpleaños", "celebraciones"],
+    respuesta: "🎉 Preparamos pasteles y pedidos especiales para celebraciones."
+},
+
+{
+    claves: ["pedido especial", "anticipacion", "tiempo pedido"],
+    respuesta: "📅 Recomendamos realizar pedidos especiales con al menos 24 horas de anticipación."
+},
+
+{
+    claves: ["ofertas", "descuentos", "promociones"],
+    respuesta: "🏷️ Consulta nuestras promociones y descuentos disponibles."
+},
+
+{
+    claves: ["oficinas", "corporativos", "empresas"],
+    respuesta: "🏢 Sí, atendemos pedidos corporativos para oficinas y reuniones."
+},
+
+{
+    claves: ["sabores", "que sabores tienen", "sabores de pastel"],
+    respuesta: "🍓 Nuestros pasteles están disponibles en varios sabores según disponibilidad."
+},
+
+{
+    claves: ["pedidos especiales", "pedido personalizado"],
+    respuesta: "✨ Podemos preparar pedidos especiales según tus necesidades."
+}
+
+];
 
     // Confirmar salida
     if(confirmarSalida){
@@ -598,22 +750,43 @@ async function sendMessage(){
         return;
     }
 
-    // Salir
-    if(lower === "salir"){
+   // Salir o terminar conversación
+if(
+    lower.includes("salir") ||
+    lower.includes("terminar conversacion") ||
+    lower.includes("terminar conversación") ||
+    lower.includes("cerrar chat")
+){
 
-        confirmarSalida = true;
+    // Si está hablando con asesor
+    if(modoAsesor){
+
+        modoAsesor = false;
 
         addMessage(`
-            ⚠️ ¿Seguro que deseas salir?
-
-            <div class="chat-options">
-                <button onclick="sendMessageSim('si')">✅ Sí</button>
-                <button onclick="sendMessageSim('no')">❌ No</button>
-            </div>
+            👨‍💼 El asesor ha finalizado la conversación.
         `, "bot-message");
+
+        setTimeout(() => {
+            mostrarOpciones();
+        }, 600);
 
         return;
     }
+
+    confirmarSalida = true;
+
+    addMessage(`
+        ⚠️ ¿Seguro que deseas salir?
+
+        <div class="chat-options">
+            <button onclick="sendMessageSim('si')">✅ Sí</button>
+            <button onclick="sendMessageSim('no')">❌ No</button>
+        </div>
+    `, "bot-message");
+
+    return;
+}
 
     // Asesor
     if (lower.includes("asesor")) {
@@ -628,32 +801,44 @@ async function sendMessage(){
     return;
 }
 
-    // RESPUESTAS
-    if(
-        lower.includes("qué venden") ||
-        lower.includes("que venden") ||
-        lower.includes("menu") ||
-        lower.includes("menú") ||
-        lower.includes("productos")
-    ){
-        response = "🥖 Ofrecemos pan francés, pan dulce, pasteles, desayunos, café y bebidas.";
+   
+response = "😊 No entendí tu pregunta. Intenta escribirla de otra manera.";
+
+for(let item of respuestas){
+
+
+
+    for(let clave of item.claves){
+
+       if(
+    lower === clave ||
+    parecido(lower, clave)
+){
+
+            response = item.respuesta;
+            break;
+        }
     }
 
-    else if(
-        lower.includes("ingredientes") ||
-        lower.includes("qué lleva") ||
-        lower.includes("que lleva")
-    ){
-        response = "🧈 Utilizamos ingredientes frescos y de alta calidad.";
+    if(response !== "😊 No entendí tu pregunta. Intenta escribirla de otra manera."){
+        break;
     }
+}
 
-    else if(lower.includes("horario")){
-        response = "🕒 Atendemos todos los días de 6:30 AM a 8:00 PM.";
-    }
 
-    else if(lower.includes("hola")){
-        response = "¡Hola! ¿En qué puedo ayudarte?";
-    }
+if(response === "cerrar_chat"){
+
+    addMessage(
+        "👋 ¡Gracias por visitarnos! Esperamos verte pronto.",
+        "bot-message"
+    );
+
+    setTimeout(() => {
+        document.getElementById("chat-body").style.display = "none";
+    }, 1500);
+
+    return;
+}
 
     setTimeout(() => {
 
