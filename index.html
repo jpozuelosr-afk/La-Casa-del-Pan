@@ -235,6 +235,155 @@ footer{
 .chat-options button:hover{
     background:#1b6f1b;
 }
+
+/* =========================
+CARRITO FLOTANTE
+========================= */
+
+/* =========================
+ICONO CARRITO
+========================= */
+
+#carrito-icono{
+
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:65px;
+    height:65px;
+    background:#228b22;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    cursor:pointer;
+    z-index:9999;
+    box-shadow:0 4px 12px rgba(0,0,0,0.25);
+    color:white;
+}
+
+#contador-carrito{
+
+    position:absolute;
+    top:-5px;
+    right:-5px;
+    background:#b22222;
+    color:white;
+    min-width:24px;
+    height:24px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:12px;
+    font-weight:bold;
+    padding:2px;
+}
+
+/* =========================
+PANEL CARRITO
+========================= */
+
+#carrito-panel{
+
+    position:fixed;
+    top:95px;
+    right:20px;
+    width:340px;
+    background:white;
+    border-radius:14px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+    overflow:hidden;
+    z-index:9999;
+    display:none;
+}
+
+#carrito-top{
+
+    background:#228b22;
+    color:white;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-weight:bold;
+}
+
+#carrito-top button{
+
+    background:none;
+    border:none;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+#contenido-carrito{
+
+    max-height:450px;
+    overflow-y:auto;
+    padding:15px;
+}
+
+.item-carrito{
+
+    border-bottom:1px solid #ddd;
+    padding:10px 0;
+}
+
+.item-carrito h4{
+    margin-bottom:5px;
+}
+
+.item-carrito button{
+
+    background:#b22222;
+    color:white;
+    border:none;
+    padding:6px 10px;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:6px;
+}
+
+#btn-finalizar{
+
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    background:#228b22;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+
+#btn-finalizar:hover{
+    background:#8b1a1a;
+}
+
+.controles-carrito{
+    display:flex;
+    gap:8px;
+    margin-top:8px;
+}
+
+.controles-carrito button{
+    border:none;
+    padding:5px 10px;
+    cursor:pointer;
+    border-radius:5px;
+    background:#228b22;
+    color:white;
+}
+
+.controles-carrito button:hover{
+    opacity:0.9;
+}
+
 </style>
 </head>
 
@@ -266,7 +415,9 @@ footer{
             <h3>Pan francés</h3>
             <p>Pan recién horneado, crujiente por fuera y suave por dentro.</p>
             <p class="precio">Q1.00 c/u</p>
-            <button>Ordenar</button>
+           <button onclick="agregarDesdeCard('pan frances')">
+    Ordenar
+</button>
         </div>
 
         <div class="card">
@@ -274,7 +425,9 @@ footer{
             <h3>Pan dulce</h3>
             <p>Variedad de panes dulces tradicionales elaborados diariamente.</p>
             <p class="precio">Q3.00 c/u</p>
-            <button>Ordenar</button>
+     <button onclick="agregarDesdeCard('pan dulce')">
+    Ordenar
+</button>
         </div>
 
         <div class="card">
@@ -282,7 +435,9 @@ footer{
             <h3>Croissant</h3>
             <p>Hojaldre de mantequilla, dorado y delicado.</p>
             <p class="precio">Q8.00</p>
-            <button>Ordenar</button>
+<button onclick="agregarDesdeCard('croissant')">
+    Ordenar
+</button>
         </div>
 
         <div class="card">
@@ -290,7 +445,9 @@ footer{
             <h3>Dona glaseada</h3>
             <p>Esponjosa dona cubierta con glaseado dulce.</p>
             <p class="precio">Q6.00</p>
-            <button>Ordenar</button>
+    <button onclick="agregarDesdeCard('dona glaseada')">
+    Ordenar
+</button>
         </div>
 
         <div class="card">
@@ -298,7 +455,9 @@ footer{
             <h3>Rebanada de pastel</h3>
             <p>Deliciosa porción de pastel fresco del día.</p>
             <p class="precio">Q18.00</p>
-            <button>Ordenar</button>
+     <button onclick="agregarDesdeCard('rebanada de pastel')">
+    Ordenar
+</button>
         </div>
 
         <div class="card">
@@ -306,7 +465,9 @@ footer{
             <h3>Pastel personalizado</h3>
             <p>Diseños especiales para cumpleaños y celebraciones.</p>
             <p class="precio">Desde Q150.00</p>
-            <button>Ordenar</button>
+<button onclick="agregarDesdeCard('pastel personalizado')">
+    Ordenar
+</button>
         </div>
 
         <div class="card">
@@ -314,7 +475,9 @@ footer{
             <h3>Desayuno especial</h3>
             <p>Incluye pan, huevos, acompañamiento y café.</p>
             <p class="precio">Q35.00</p>
-            <button>Ordenar</button>
+<button onclick="agregarDesdeCard('desayuno especial')">
+    Ordenar
+</button>
         </div>
 
         <div class="card">
@@ -322,7 +485,9 @@ footer{
             <h3>Café americano</h3>
             <p>Café recién preparado con aroma intenso.</p>
             <p class="precio">Q12.00</p>
-            <button>Ordenar</button>
+<button onclick="agregarDesdeCard('cafe americano')">
+    Ordenar
+</button>
         </div>
 
         <div class="card">
@@ -330,7 +495,9 @@ footer{
             <h3>Chocolate caliente</h3>
             <p>Bebida cremosa y reconfortante.</p>
             <p class="precio">Q15.00</p>
-            <button>Ordenar</button>
+<button onclick="agregarDesdeCard('chocolate caliente')">
+    Ordenar
+</button>
         </div>
 
     </div>
@@ -342,14 +509,71 @@ footer{
     <p>&copy; 2026 La Casa del Pan. Todos los derechos reservados.</p>
 </footer>
 
+<!-- ICONO CARRITO -->
+
+<div id="carrito-icono" onclick="toggleCarrito()">
+
+    🛒
+
+    <span id="contador-carrito">
+        0
+    </span>
+
+</div>
+
+<!-- PANEL CARRITO -->
+
+<div id="carrito-panel">
+
+    <div id="carrito-top">
+
+        <span>🛒 Mi carrito</span>
+
+        <button onclick="toggleCarrito()">
+            ✖
+        </button>
+
+    </div>
+
+    <div id="contenido-carrito">
+
+        🛒 Tu carrito está vacío.
+
+    </div>
+
+</div>
+
 <!-- CHATBOT -->
 
 <div id="chatbot">
 
-    <div id="chat-header" onclick="toggleChat()">
-        💬 Chat con nosotros
+<div id="chat-header" onclick="toggleChat()">
+
+    <div style="
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:10px;
+    ">
+
+        <img src="panito.png"
+            alt="Panito"
+            style="
+                width:40px;
+                height:40px;
+                border-radius:50%;
+                background:white;
+                padding:4px;
+            "
+        >
+
+        <div>
+            🤖 <strong>Panito</strong>
+        </div>
+
     </div>
 
+</div>
     <div id="chat-body">
 
         <div id="chat-messages">
@@ -377,6 +601,62 @@ let opcionesMostradas = false;
 let confirmarSalida = false;
 let esperandoNombre = false;
 let nombreUsuario = "Cliente";
+let modoCompra = false;
+let carrito = [];
+let pasoCompra = "";
+let tipoEntrega = "";
+let metodoPago = "";
+let direccionEnvio = "";
+let carritoAbierto = false;
+let pedidoFinalizado = false;
+
+const productosPanaderia = {
+
+    "pan frances": {
+        nombre: "Pan francés",
+        precio: 1
+    },
+
+    "pan dulce": {
+        nombre: "Pan dulce",
+        precio: 3
+    },
+
+    "croissant": {
+        nombre: "Croissant",
+        precio: 8
+    },
+
+    "dona glaseada": {
+        nombre: "Dona glaseada",
+        precio: 6
+    },
+
+    "rebanada de pastel": {
+        nombre: "Rebanada de pastel",
+        precio: 18
+    },
+
+    "pastel personalizado": {
+        nombre: "Pastel personalizado",
+        precio: 150
+    },
+
+    "desayuno especial": {
+        nombre: "Desayuno especial",
+        precio: 35
+    },
+
+    "cafe americano": {
+        nombre: "Café americano",
+        precio: 12
+    },
+
+    "chocolate caliente": {
+        nombre: "Chocolate caliente",
+        precio: 15
+    }
+};
 
 function limpiarTexto(texto){
 
@@ -444,6 +724,135 @@ function parecido(texto, palabraClave){
     return coincidencias === palabrasClave.length;
 }
 
+function normalizarProducto(nombre){
+
+    nombre = limpiarTexto(nombre);
+
+    // ====================================
+    // PAN FRANCES
+    // ====================================
+
+    if(
+        parecido(nombre, "pan frances") ||
+        parecido(nombre, "pan francés") ||
+        parecido(nombre, "panes franceses") ||
+        parecido(nombre, "frances") ||
+        parecido(nombre, "franceses")
+    ){
+        return "pan frances";
+    }
+
+    // ====================================
+    // PAN DULCE
+    // ====================================
+
+    if(
+        parecido(nombre, "pan dulce") ||
+        parecido(nombre, "panes dulces") ||
+        parecido(nombre, "dulce") ||
+        parecido(nombre, "dulces")
+    ){
+        return "pan dulce";
+    }
+
+    // ====================================
+    // CROISSANT
+    // ====================================
+
+    if(
+        parecido(nombre, "croissant") ||
+        parecido(nombre, "croissants") ||
+        parecido(nombre, "croasant") ||
+        parecido(nombre, "croasants") ||
+        parecido(nombre, "croasan") ||
+        parecido(nombre, "cuernito") ||
+        parecido(nombre, "cuernitos")
+    ){
+        return "croissant";
+    }
+
+    // ====================================
+    // DONA GLASEADA
+    // ====================================
+
+    if(
+        parecido(nombre, "dona glaseada") ||
+        parecido(nombre, "donas glaseadas") ||
+        parecido(nombre, "dona") ||
+        parecido(nombre, "donas")
+    ){
+        return "dona glaseada";
+    }
+
+    // ====================================
+    // REBANADA DE PASTEL
+    // ====================================
+
+    if(
+        parecido(nombre, "rebanada de pastel") ||
+        parecido(nombre, "rebanadas de pastel") ||
+        parecido(nombre, "pedazo de pastel") ||
+        parecido(nombre, "pedazos de pastel")
+    ){
+        return "rebanada de pastel";
+    }
+
+    // ====================================
+    // PASTEL PERSONALIZADO
+    // ====================================
+
+    if(
+        parecido(nombre, "pastel personalizado") ||
+        parecido(nombre, "pasteles personalizados") ||
+        parecido(nombre, "pastel especial") ||
+        parecido(nombre, "pastel custom")
+    ){
+        return "pastel personalizado";
+    }
+
+    // ====================================
+    // DESAYUNO ESPECIAL
+    // ====================================
+
+    if(
+        parecido(nombre, "desayuno especial") ||
+        parecido(nombre, "desayunos especiales") ||
+        parecido(nombre, "desayuno") ||
+        parecido(nombre, "combo desayuno")
+    ){
+        return "desayuno especial";
+    }
+
+    // ====================================
+    // CAFE AMERICANO
+    // ====================================
+
+    if(
+        parecido(nombre, "cafe americano") ||
+        parecido(nombre, "cafes americanos") ||
+        parecido(nombre, "café americano") ||
+        parecido(nombre, "cafe") ||
+        parecido(nombre, "cafecito")
+    ){
+        return "cafe americano";
+    }
+
+    // ====================================
+    // CHOCOLATE CALIENTE
+    // ====================================
+
+    if(
+        parecido(nombre, "chocolate caliente") ||
+        parecido(nombre, "chocolates calientes") ||
+        parecido(nombre, "chocolate") ||
+        parecido(nombre, "choco caliente")
+    ){
+        return "chocolate caliente";
+    }
+
+    return nombre;
+}
+
 // Abrir y cerrar chat
 function toggleChat() {
 
@@ -465,19 +874,294 @@ function toggleChat() {
     }
 }
 
+function toggleCarrito(){
+
+    const panel =
+        document.getElementById("carrito-panel");
+
+    carritoAbierto = !carritoAbierto;
+
+    panel.style.display =
+        carritoAbierto
+            ? "block"
+            : "none";
+}
+
+function actualizarCarritoVisual(){
+
+    const contenido =
+        document.getElementById("contenido-carrito");
+
+    const contador =
+        document.getElementById("contador-carrito");
+
+    if(carrito.length === 0){
+
+        contenido.innerHTML =
+            "🛒 Tu carrito está vacío.";
+
+        contador.innerHTML = "0";
+
+        return;
+    }
+
+    let html = "";
+
+    let total = 0;
+
+    let cantidadTotal = 0;
+
+    carrito.forEach((item) => {
+
+        const subtotal =
+            item.precio * item.cantidad;
+
+        total += subtotal;
+
+        cantidadTotal += item.cantidad;
+
+        html += `
+            <div class="item-carrito">
+
+                <h4>${item.nombre}</h4>
+
+                <p>
+                    Q${item.precio.toFixed(2)}
+                    x ${item.cantidad}
+                </p>
+
+                <p>
+                    Subtotal:
+                    Q${subtotal.toFixed(2)}
+                </p>
+
+                <div class="controles-carrito">
+
+                    <button onclick="
+                        quitarProducto(
+                            '${item.nombre}',
+                            1
+                        )
+                    ">
+                        −
+                    </button>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="${item.cantidad}"
+                        onchange="
+                            cambiarCantidadProducto(
+                                '${item.nombre}',
+                                this.value
+                            )
+                        "
+                        style="
+                            width:60px;
+                            text-align:center;
+                            padding:5px;
+                            border:1px solid #ccc;
+                            border-radius:5px;
+                        "
+                    >
+
+                    <button onclick="
+                        agregarProducto(
+                            '${item.nombre}',
+                            1
+                        )
+                    ">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+    });
+
+    contador.innerHTML = cantidadTotal;
+
+    html += `
+        <div style="
+            margin-top:15px;
+            font-size:18px;
+            font-weight:bold;
+        ">
+            Total: Q${total.toFixed(2)}
+        </div>
+
+        <button
+            id="btn-finalizar"
+            onclick="finalizarCompraCarrito()"
+        >
+            Finalizar pedido
+        </button>
+    `;
+
+    contenido.innerHTML = html;
+}
+function finalizarCompraCarrito(){
+
+    if(carrito.length === 0){
+
+        alert("Tu carrito está vacío");
+
+        return;
+    }
+
+    // ABRIR CHATBOT
+    document.getElementById(
+        "chat-body"
+    ).style.display = "flex";
+
+    // CERRAR CARRITO
+    carritoAbierto = false;
+
+    document.getElementById(
+        "carrito-panel"
+    ).style.display = "none";
+
+    modoCompra = true;
+
+    pasoCompra = "entrega";
+
+    mostrarResumenPedido();
+
+    mostrarEscribiendo(() => {
+
+        addMessage(`
+            🚚 ¿Cómo deseas recibir tu pedido?<br><br>
+
+            • envio<br>
+            • recoger
+        `, "bot-message");
+
+    });
+}
+
 // Agregar mensajes
 function addMessage(text, className){
+
+    if(pedidoFinalizado && className === "bot-message"){
+
+        // permitir solo mensajes importantes (opcional)
+        if(
+            text.includes("Gracias por tu compra") ||
+            text.includes("Pedido confirmado") ||
+            text.includes("orden")
+        ){
+            // sí se permite
+        } else {
+            return; // 🔥 aquí se evita el resumen repetido
+        }
+    }
 
     const messages = document.getElementById("chat-messages");
 
     const msg = document.createElement("div");
 
     msg.className = className;
-    msg.innerHTML = text;
+
+    // MENSAJES DEL BOT
+    if(className === "bot-message"){
+
+        msg.innerHTML = `
+            <div style="
+                display:flex;
+                align-items:flex-start;
+                gap:10px;
+            ">
+
+             <img src="panito.png"
+            alt="Panito"
+            style="
+                width:40px;
+                height:40px;
+                border-radius:50%;
+                background:white;
+                padding:4px;
+            "
+        >
+
+                <div>
+                    <strong style="color:#b22222;">
+                        Panito
+                    </strong><br>
+
+                    ${text}
+                </div>
+
+            </div>
+        `;
+
+    } else {
+
+        // MENSAJES DEL USUARIO
+        msg.innerHTML = text;
+    }
 
     messages.appendChild(msg);
 
     messages.scrollTop = messages.scrollHeight;
+}
+
+function mostrarEscribiendo(callback){
+
+    const messages = document.getElementById("chat-messages");
+
+    const typing = document.createElement("div");
+
+    typing.className = "bot-message";
+
+    typing.id = "typing-message";
+
+typing.innerHTML = `
+    <div style="
+        display:flex;
+        align-items:center;
+        gap:10px;
+    ">
+
+        <img
+            src="panito.png"
+            alt="Panito"
+            style="
+                width:35px;
+                height:35px;
+                border-radius:50%;
+                background:white;
+                padding:3px;
+                border:1px solid #ddd;
+            "
+        >
+
+        <div>
+            <strong style="color:#b22222;">
+                Panito
+            </strong><br>
+
+            ✍️ Está escribiendo...
+        </div>
+
+    </div>
+`;
+    messages.appendChild(typing);
+
+    messages.scrollTop = messages.scrollHeight;
+
+    setTimeout(() => {
+
+        const typingElement =
+            document.getElementById("typing-message");
+
+        if(typingElement){
+            typingElement.remove();
+        }
+
+        callback();
+
+    }, 1200);
 }
 
 // Mostrar opciones
@@ -491,6 +1175,7 @@ function mostrarOpciones(){
             <button onclick="selectOption('Precios')">💰 Precios</button>
             <button onclick="selectOption('Horario')">🕒 Horario</button>
             <button onclick="selectOption('Contacto')">📞 Contacto</button>
+	<button onclick="selectOption('Realizar pedido')">🛒 Realizar pedido</button>
             <button onclick="selectOption('Asesor')">👨‍💼 Contactar a un asesor</button>
             <button onclick="selectOption('Salir')">❌ Finalizar chat</button>
         </div>
@@ -546,6 +1231,30 @@ function selectOption(option){
         response = "📞 Llámanos al +502 1234-5678.";
     }
 
+else if(option === "Realizar pedido"){
+
+    modoCompra = true;
+    pasoCompra = "productos";
+    carrito = [];
+
+    response = `
+        🛒 <strong>Iniciando pedido</strong><br><br>
+
+        Escribe el producto y cantidad.<br><br>
+
+        Ejemplos:<br>
+        • 2 pan frances<br>
+        • 3 croissant<br>
+        • 1 chocolate caliente<br><br>
+
+        Cuando termines escribe:<br>
+        <strong>confirmar</strong><br><br>
+
+        Para quitar productos escribe:<br>
+        • quitar pan frances
+    `;
+}
+
     else if(option === "Asesor"){
 
         esperandoNombre = true;
@@ -566,9 +1275,13 @@ function selectOption(option){
 
     setTimeout(() => {
 
-        addMessage(response, "bot-message");
+        mostrarEscribiendo(() => {
 
-        if(!modoAsesor){
+    addMessage(response, "bot-message");
+
+});
+
+       if(!modoAsesor && !modoCompra){
 
             setTimeout(() => {
                 mostrarOpciones();
@@ -619,6 +1332,290 @@ async function sendMessage(){
     }
 
     const lower = limpiarTexto(text);
+
+// EVITAR RESPUESTAS DESPUÉS DE FINALIZAR PEDIDO
+if(pedidoFinalizado){
+
+    pedidoFinalizado = false;
+
+    modoCompra = false;
+
+    pasoCompra = "";
+
+    carrito = [];
+
+    tipoEntrega = "";
+
+    metodoPago = "";
+
+    direccionEnvio = "";
+
+    actualizarCarritoVisual();
+}
+
+// =========================
+// SISTEMA DE COMPRA
+// =========================
+
+if(modoCompra){
+
+// CANCELAR PEDIDO
+if(
+    lower === "cancelar" ||
+    lower === "cancelar pedido" ||
+    lower === "salir del pedido" ||
+    lower === "ya no" ||
+    lower === "no quiero comprar"
+){
+
+    modoCompra = false;
+    pasoCompra = "";
+    carrito = [];
+
+    tipoEntrega = "";
+    metodoPago = "";
+    direccionEnvio = "";
+
+    actualizarCarritoVisual();
+
+    addMessage(`
+        ❌ Pedido cancelado correctamente.<br><br>
+        😊 Ahora puedes seguir hablando conmigo normalmente.
+    `, "bot-message");
+
+    setTimeout(() => {
+        mostrarOpciones();
+    }, 700);
+
+    return;
+}
+
+    // CONFIRMAR PRODUCTOS
+    if(pasoCompra === "productos"){
+
+        if(lower === "confirmar"){
+
+            if(carrito.length === 0){
+
+                addMessage(
+                    "⚠️ Debes agregar productos primero.",
+                    "bot-message"
+                );
+
+                return;
+            }
+
+            mostrarResumenPedido();
+
+            pasoCompra = "entrega";
+
+            addMessage(`
+                🚚 ¿Cómo deseas recibir tu pedido?<br><br>
+
+                • envio<br>
+                • recoger
+            `, "bot-message");
+
+            return;
+        }
+
+        // QUITAR PRODUCTO
+if(
+    lower === "vaciar carrito" ||
+    lower === "quitar todo" ||
+    lower === "cancelar pedido"
+){
+
+    carrito = [];
+
+    addMessage(
+        "🗑️ Se eliminó todo el carrito.",
+        "bot-message"
+    );
+
+    return;
+}
+
+
+if(lower.startsWith("quitar ")){
+
+    const textoQuitar = lower.replace("quitar ", "");
+
+    const partesQuitar = textoQuitar.split(" ");
+
+    let cantidadQuitar = 1;
+
+    let nombreQuitar = "";
+
+    // SI EL PRIMER VALOR ES NUMERO
+    if(!isNaN(parseInt(partesQuitar[0]))){
+
+        cantidadQuitar = parseInt(partesQuitar[0]);
+
+        nombreQuitar = partesQuitar.slice(1).join(" ");
+
+    } else {
+
+        nombreQuitar = textoQuitar;
+    }
+
+    quitarProducto(nombreQuitar, cantidadQuitar);
+
+    return;
+}
+
+        // AGREGAR PRODUCTOS
+        const partes = lower.split(" ");
+
+        const cantidad = parseInt(partes[0]);
+
+        const nombreProducto = partes.slice(1).join(" ");
+
+if(!isNaN(cantidad)){
+
+    agregarProducto(nombreProducto, cantidad);
+
+    return;
+}
+
+addMessage(
+    "⚠️ Ejemplo válido: 2 pan frances",
+    "bot-message"
+);
+
+return;
+}
+
+// ENTREGA
+if(pasoCompra === "entrega"){
+
+    if(lower.includes("envio")){
+
+        tipoEntrega = "Envío a domicilio";
+
+        pasoCompra = "direccion";
+
+        addMessage(
+            "📍 Escribe la dirección de entrega.",
+            "bot-message"
+        );
+
+        return;
+
+    } else if(lower.includes("recoger")){
+
+        tipoEntrega = "Recoger en tienda";
+
+        pasoCompra = "pago";
+
+        addMessage(`
+            💳 ¿Método de pago?<br><br>
+
+            • efectivo<br>
+            • tarjeta<br>
+            • transferencia
+        `, "bot-message");
+
+        return;
+    }
+
+    addMessage(
+        "⚠️ Escribe: envio o recoger",
+        "bot-message"
+    );
+
+    return;
+}
+
+// DIRECCION
+if(pasoCompra === "direccion"){
+
+    direccionEnvio = text;
+
+    pasoCompra = "pago";
+
+    addMessage(`
+        💳 ¿Método de pago?<br><br>
+
+        • efectivo<br>
+        • tarjeta<br>
+        • transferencia
+    `, "bot-message");
+
+    return;
+}
+
+// PAGO
+if(pasoCompra === "pago"){
+
+    metodoPago = text;
+
+    setTimeout(() => {
+
+        const numeroOrden = generarNumeroOrden();
+
+        addMessage(`
+            ✅ <strong>Pedido confirmado</strong><br><br>
+
+            🧾 Número de orden:<br>
+            <strong>${numeroOrden}</strong><br><br>
+
+            🚚 Entrega:<br>
+            ${tipoEntrega}<br><br>
+
+            📍 Dirección:<br>
+            ${tipoEntrega === "Envío a domicilio"
+                ? direccionEnvio
+                : "Recogerá en tienda"}<br><br>
+
+            💳 Método de pago:<br>
+            ${metodoPago}<br><br>
+
+            👨‍🍳 Tu pedido será preparado pronto.
+        `, "bot-message");
+
+        modoCompra = false;
+        pedidoFinalizado = true;
+
+        pasoCompra = "";
+        carrito = [];
+
+        direccionEnvio = "";
+        metodoPago = "";
+        tipoEntrega = "";
+
+        actualizarCarritoVisual();
+
+    }, 300);
+
+    return;
+}
+
+
+    actualizarCarritoVisual();
+
+    // VOLVER AL CHAT NORMAL
+    setTimeout(() => {
+
+        addMessage(`
+            😊 ¿Deseas algo más?
+
+            <div class="chat-options">
+                <button onclick="mostrarMenuOpciones()">
+                    📋 Ver menú
+                </button>
+
+                <button onclick="sendMessageSim('gracias')">
+                    ✅ Finalizar
+                </button>
+            </div>
+        `, "bot-message");
+
+    }, 1000);
+
+    return;
+}
+
 
     let response = "Gracias por tu mensaje 😊";
 
@@ -720,11 +1717,20 @@ const respuestas = [
 },
 
 {
-    claves: ["quiero", "kiero", "deseo", "puedo"],
-    respuesta: "👨‍💼 Para realizar tu pedido contactate con un asesor."
-
-}
-
+    claves: [
+        "realizar pedido",
+        "quiero realizar un pedido",
+        "quiero hacer un pedido",
+        "hacer pedido",
+        "hacer un pedido",
+        "quiero pedir",
+        "hacer orden",
+        "realizar orden",
+        "ordenar comida",
+        "comprar pan"
+    ],
+    respuesta: "iniciar_pedido"
+},
 ];
 
     // Confirmar salida
@@ -831,6 +1837,33 @@ for(let item of respuestas){
     }
 }
 
+if(response === "iniciar_pedido"){
+
+    modoCompra = true;
+    pasoCompra = "productos";
+    carrito = [];
+
+    addMessage(`
+        🛒 <strong>Iniciando pedido</strong><br><br>
+
+        Escribe el producto y cantidad.<br><br>
+
+        Ejemplos:<br>
+        • 2 pan frances<br>
+        • 3 croissant<br>
+        • 1 chocolate caliente<br><br>
+
+        Cuando termines escribe:<br>
+        <strong>confirmar</strong><br><br>
+
+        Para quitar productos escribe:<br>
+        • quitar pan frances
+    `, "bot-message");
+
+    return;
+}
+
+
 
 if(response === "cerrar_chat"){
 
@@ -864,6 +1897,168 @@ if(response === "cerrar_chat"){
         }, 600);
 
     }, 500);
+}
+
+
+
+function agregarProducto(nombreProducto, cantidad){
+
+nombreProducto = normalizarProducto(nombreProducto);
+
+const producto = productosPanaderia[nombreProducto];
+
+    if(!producto){
+
+        addMessage(
+            "❌ Producto no encontrado.",
+            "bot-message"
+        );
+
+        return;
+    }
+
+    const existente = carrito.find(
+        item => item.nombre === producto.nombre
+    );
+
+    if(existente){
+
+        existente.cantidad += cantidad;
+
+    } else {
+
+        carrito.push({
+            nombre: producto.nombre,
+            precio: producto.precio,
+            cantidad: cantidad
+        });
+    }
+
+    addMessage(
+        `✅ ${cantidad} ${producto.nombre} agregado(s) al carrito.`,
+        "bot-message"
+    );
+
+actualizarCarritoVisual();
+}
+function quitarProducto(nombreProducto, cantidad = 1){
+
+nombreProducto = normalizarProducto(nombreProducto);
+
+const producto = productosPanaderia[nombreProducto];
+
+    if(!producto){
+
+        addMessage(
+            "❌ Producto no encontrado.",
+            "bot-message"
+        );
+
+        return;
+    }
+
+    const item = carrito.find(
+        item => item.nombre === producto.nombre
+    );
+
+    if(!item){
+
+        addMessage(
+            "⚠️ Ese producto no está en el carrito.",
+            "bot-message"
+        );
+
+        return;
+    }
+
+
+
+    // RESTAR CANTIDAD
+    item.cantidad -= cantidad;
+
+    // SI LLEGA A 0 SE ELIMINA
+    if(item.cantidad <= 0){
+
+        carrito = carrito.filter(
+            p => p.nombre !== producto.nombre
+        );
+    }
+
+    addMessage(
+        `🗑️ Se quitaron ${cantidad} ${producto.nombre}.`,
+        "bot-message"
+    );
+
+ 
+actualizarCarritoVisual();
+}
+
+function cambiarCantidadProducto(nombreProducto, nuevaCantidad){
+
+    nombreProducto = normalizarProducto(nombreProducto);
+
+    const producto =
+        productosPanaderia[nombreProducto];
+
+    if(!producto) return;
+
+    nuevaCantidad = parseInt(nuevaCantidad);
+
+    if(isNaN(nuevaCantidad) || nuevaCantidad < 1){
+
+        nuevaCantidad = 1;
+    }
+
+    const item = carrito.find(
+        item => item.nombre === producto.nombre
+    );
+
+    if(!item) return;
+
+    item.cantidad = nuevaCantidad;
+
+    actualizarCarritoVisual();
+}
+
+function mostrarResumenPedido(){
+
+    if(!modoCompra || pedidoFinalizado) return;
+
+    if(carrito.length === 0){
+
+        addMessage(
+            "🛒 Tu carrito está vacío.",
+            "bot-message"
+        );
+
+        return;
+    }
+
+    let total = 0;
+
+    let resumen = `
+        🧾 <strong>Resumen del pedido:</strong><br><br>
+    `;
+
+    carrito.forEach(item => {
+
+        const subtotal = item.precio * item.cantidad;
+
+        total += subtotal;
+
+        resumen += `
+            🍞 <strong>${item.nombre}</strong><br>
+            • Precio unitario: Q${item.precio.toFixed(2)}<br>
+            • Cantidad: ${item.cantidad}<br>
+            • Subtotal: Q${subtotal.toFixed(2)}<br><br>
+        `;
+    });
+
+    resumen += `
+        💰 <strong>Total a pagar: Q${total.toFixed(2)}</strong>
+    `;
+
+    addMessage(resumen, "bot-message");
 }
 
 // Enter para enviar
@@ -933,6 +2128,32 @@ function ocultarOpciones(){
     addMessage(`
         😊 Perfecto, seguiré respondiendo tus preguntas.
     `, "bot-message");
+}
+
+function generarNumeroOrden(){
+
+    const fecha = Date.now();
+
+    const random = Math.floor(
+        Math.random() * 1000
+    );
+
+    return "PAN-" + fecha + "-" + random;
+}
+
+function agregarDesdeCard(nombreProducto){
+
+    // Activar modo compra
+    modoCompra = true;
+
+    // Agregar 1 producto al carrito
+    agregarProducto(nombreProducto, 1);
+
+    // Abrir carrito automáticamente
+    if(!carritoAbierto){
+        toggleCarrito();
+    }
+
 }
 </script>
 
